@@ -30,6 +30,7 @@ const run = async (deployed) => {
   let oracleAddr
 
   if (deployed) {
+
     // Call an existing contract
     const oracleAbi = require('./lib/oracle.json')
     oracleAddr = await readFile(__dirname + '/lib/oracleAddress.json')
@@ -43,17 +44,17 @@ const run = async (deployed) => {
     oracle = await Oracle.deploy()
     await oracle.deployed()
     const json = await readFile(__dirname + '/../artifacts/contracts/Oracle.sol/Oracle.json')
-    await writeFile(__dirname + '/lib/oracle.json', JSON.stringify((JSON.parse(json).abi), null, 2)) // write the abi to a file
+    await writeFile(__dirname + '/lib/oracle.json', JSON.stringify((JSON.parse(json).abi), null, 2)) // write the abi and address to a file
     await writeFile(__dirname + '/lib/oracleAddress.json', oracle.address)
     oracleAddr = oracle.address
     console.log("Oracle contract deployed to:", oracle.address)
   }
 
-  // 1. call consult to get the latest tick from 1 second ago
+  // 1. call consult() to get the latest tick from 1 second ago
   const secondsAgo = 1
   const [arithmeticMeanTick, harmonicMeanLiquidity] = await oracle.consult(pool, secondsAgo)
 
-  // 2. get a quote from the oracle
+  // 2. get a quote from the oracle using getQuoteAtTick()
   const usdcBal = 10000
   const price = await oracle.getQuoteAtTick(
     arithmeticMeanTick,
