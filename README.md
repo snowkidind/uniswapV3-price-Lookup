@@ -14,9 +14,13 @@ For instance, consider looking up the simple "last traded price" of a pool. It s
 NOTE: In the oracle.js file set deployed variable to true once you deploy the contract on a active network to save time/gas, or just use the contract already deployed on mainnet. (link above)
 
 commands:
+
 `npx hardhat compile`
+
 `npx hardhat run --network mainnet scripts/oracle.js`
+
 `npx hardhat run --network hardhat scripts/oracle.js`
+
 `npx hardhat run --network ropsten scripts/oracle.js`
 
 Remaining issues:
@@ -26,3 +30,5 @@ In some places the underlying uniswap code uses the pool fee as an index, and in
 My intention here was to make an easy method of looking up a price on a v3 pool, but there may be some issues regarding which pool the price is reading from when there are multiple pools of the same currency pair.
 
 To contribute something for my efforts, send ERC20's/NFTs/ETH to 0xEBE40BB6FAa9AC01B2eda5c3917Bc3Bb8Bb76437
+
+![Tip QR](https://github.com/snowkidind/uniswapV3priceLookup/tree/master/scripts/lib/tipaddress.png "Tips")
