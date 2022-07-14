@@ -16,7 +16,7 @@ To get started:
 - complete .env by changing things in .env.example
 - npm install
 - review code in scripts/oracle.js
-
+ 
 NOTE: In the oracle.js file, set deployed variable to true once you deploy the contract on a active network to save time/gas, or just use the contract already deployed on mainnet. (link above)
 
 commands:
