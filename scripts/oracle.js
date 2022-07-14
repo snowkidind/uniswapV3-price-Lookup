@@ -4,8 +4,9 @@ const hre = require('hardhat')
 const fs = require('fs')
 const readline = require('readline')
 const bigDecimal = require('js-big-decimal')
-
 const ethers = hre.ethers
+
+let deployed = false // switch to true once you deploy the contract on a active network to save time/gas
 
 let usdc, weth, pool
 switch (process.env.HARDHAT_NETWORK) {
@@ -22,8 +23,6 @@ switch (process.env.HARDHAT_NETWORK) {
     pool = '0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640' // usdc eth
   break
 }
-
-
 
 const run = async (deployed) => {
 
@@ -65,7 +64,7 @@ const run = async (deployed) => {
 
   // 3. The last price of the asset is basically what you gave / what you can get
   const last = bigD(String(usdcBal)).divide(bigD(String(d(price.toString(), 18))))
-  console.log(last.getValue())
+  console.log('Last price: ' + last.getValue())
 
 }
 
@@ -111,7 +110,6 @@ const writeFile = async (file, content) => {
 
 ;( async()=> { 
   try {
-    let deployed = true // switch to true once you deploy the contract on a active network
     if (process.env.HARDHAT_NETWORK === 'hardhat') {
       deployed = false
     }
