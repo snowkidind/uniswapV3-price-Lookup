@@ -11,7 +11,7 @@ Modified from uniswap v3 OracleLibrary.sol
 
 This contract is deployed on mainnet at [0xF3E834BE475Ad2ac1c4C7842073c9b62c9d91358](https://etherscan.io/address/0xf3e834be475ad2ac1c4c7842073c9b62c9d91358#code), and it serves to allow a simple price lookup for this exact use case, nothing more.
 
-To get started: 
+To get started:
 
 - complete .env by changing things in .env.example
 - npm install
