@@ -35,7 +35,7 @@ Remaining issues:
 
  In the enclosed javascript, the first contract call identifies a specific v3 pool by "pool address". In the second contract call, the exact pool is vaguely assumed by only supplying "token symbols".
 
-### In the contract there is some strangeness, because the second call compares the value of an addres with another address. This appears to be broken. I didnt intend to modify the original code, witht this deploy, If you are having issues try flipping the input and output token:
+### In the contract there is some strangeness, because the second call compares the value of an address with another address. This appears to be broken. I didn't intend to modify the original code, with this deploy, If you are having issues try flipping the input and output token:
 
 ```
 function getQuoteAtTick() {
