@@ -35,6 +35,24 @@ Remaining issues:
 
  In the enclosed javascript, the first contract call identifies a specific v3 pool by "pool address". In the second contract call, the exact pool is vaguely assumed by only supplying "token symbols".
 
+### In the contract there is some strangeness, because the second call compares the value of an addres with another address. This appears to be broken. I didnt intend to modify the original code, witht this deploy, If you are having issues try flipping the input and output token:
+
+```
+function getQuoteAtTick() {
+  ...
+
+        if (sqrtRatioX96 <= type(uint128).max) {
+          ...
+            // this appears to be wrong.
+            quoteAmount = baseToken < quoteToken 
+                ? FullMath.mulDiv(ratioX192, baseAmount, 1 << 192)
+                : FullMath.mulDiv(1 << 192, baseAmount, ratioX192);
+        } else {
+          ...
+        }
+    }
+```
+
 My intention here was to make an easy method of looking up a price on a v3 pool, but there may be some issues regarding which pool the price is reading from when there are multiple pools of the same currency pair. Comments, critique, observations, bugs, complaints are all welcome.
 
 To contribute something for my efforts, send ERC20's/NFTs/ETH to 0xEBE40BB6FAa9AC01B2eda5c3917Bc3Bb8Bb76437
