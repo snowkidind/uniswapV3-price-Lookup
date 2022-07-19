@@ -35,8 +35,6 @@ Remaining issues:
 
  In the enclosed javascript, the first contract call identifies a specific v3 pool by "pool address". In the second contract call, the exact pool is vaguely assumed by only supplying "token symbols".
 
-### In the contract there is some strangeness, because the second call compares the value of an address with another address. This appears to be broken. I didn't intend to modify the original code, with this deploy, If you are having issues try flipping the input and output token:
-
 ```
 function getQuoteAtTick() {
   ...
@@ -58,3 +56,12 @@ My intention here was to make an easy method of looking up a price on a v3 pool,
 To contribute something for my efforts, send ERC20's/NFTs/ETH to 0xEBE40BB6FAa9AC01B2eda5c3917Bc3Bb8Bb76437
 
 ![Tip QR](https://github.com/snowkidind/uniswapV3priceLookup/tree/master/scripts/lib/tipaddress.png "Tips")
+
+
+## References:
+
+A user friendly explanation of the oracle and how time based vwap is achieved
+[Uniswap v3 TWAP Oracle Tooling and Deep Dive Pt. 1](https://chaoslabs.xyz/posts/chaos-labs-uniswap-v3-twap-deep-dive-pt-1)
+
+About Ticks: Math nerds only. Not so user friendly.
+[Uniswap v3 Features Explained in Depth](https://medium.com/taipei-ethereum-meetup/uniswap-v3-features-explained-in-depth-178cfe45f223)
